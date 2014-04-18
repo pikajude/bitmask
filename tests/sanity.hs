@@ -7,17 +7,13 @@ import Data.Int
 import Data.Word
 import Test.QuickCheck
 
-data Test = Test
-          { test1 :: Bool
-          , test2 :: ()
-          , test3 :: Bool
-          , test4 :: Bool
-          } deriving (Show, Eq)
+data Test = Test Bool Bool Bool Bool
+          deriving (Show, Eq)
 
 instance Arbitrary Test where
     arbitrary = Test <$> arbitrary <*> arbitrary <*> arbitrary <*> arbitrary
 
-bitmask ''Test
+mkBitmask ''Test
 
 main :: IO ()
 main = do
